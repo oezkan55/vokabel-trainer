@@ -1,0 +1,118 @@
+@use "../abstracts" as *;
+
+$-btn--blue-radius: 10rem;
+$-btn--modal-size: 4rem;
+
+.btn {
+  background: none;
+
+  &--blue:is(:link, :visited) {
+    color: $color-white;
+    color: $color-grey;
+    font-size: 2.4rem;
+    font-weight: 700;
+    padding: 1.2rem 2.4rem;
+    position: relative;
+    z-index: 5;
+    transition: all 0.3s;
+
+    &:is(:hover, :active) {
+      color: $color-grey;
+      color: $color-white;
+    }
+
+    &::after {
+      content: "";
+      display: inline-block;
+      width: 100%;
+      height: 100%;
+      border-radius: $-btn--blue-radius;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: scale(1.2);
+      transition: all 0.4s, opacity 0.2s;
+      z-index: -1;
+      opacity: 0.5;
+    }
+
+    &:hover::after {
+      opacity: 1;
+      transform: scale(1);
+      background-color: $color-white;
+      background-color: $color-primary;
+      box-shadow: 0 1rem 2rem rgb(0 0 0 / 15%);
+    }
+  }
+
+  &--blue-active:is(:link, :visited) {
+    background-color: $color-white;
+    color: $color-grey;
+    border-radius: $-btn--blue-radius;
+  }
+
+  &--delete {
+    color: #ced4da;
+    width: 2.7rem;
+    height: 2.7rem;
+    transition: all 0.2s;
+
+    &:hover {
+      transform: scale(1.15);
+    }
+
+    &:active {
+      transform: scale(1.05);
+    }
+
+    svg {
+      stroke: #555;
+    }
+  }
+
+  &--translate {
+    width: 5rem;
+    height: 5rem;
+    padding: 0.8rem;
+
+    grid-column: 1 / -1;
+    justify-self: center;
+  }
+
+  &--form {
+    background-color: $color-primary;
+    color: $color-white;
+    padding: 1.6rem;
+    font-size: 2rem;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    width: 100%;
+
+    grid-column: 1 / -1;
+  }
+
+  &--next-vok {
+    font-size: 3rem;
+    font-weight: 500;
+    color: $color-primary-dark;
+    font-style: italic;
+  }
+
+  &--close-modal {
+    position: absolute;
+    top: -4px;
+    right: -2px;
+    width: $-btn--modal-size;
+    height: $-btn--modal-size;
+    line-height: $-btn--modal-size;
+    font-size: $-btn--modal-size;
+    font-weight: 300;
+  }
+
+  &--faq-item {
+    width: 4.4rem;
+    height: 4.4rem;
+    padding: 0.8rem;
+    color: $color-primary;
+  }
+}

@@ -1,0 +1,141 @@
+@use "abstracts" as *;
+
+$-layout-radious: 1rem;
+
+//*?+*+*+*+====== !ANCHOR Container =====+*+*+*+*/
+.container {
+  height: 100vh; //? Fallback
+  height: 100svh;
+  position: relative;
+
+  display: grid;
+  grid-template-columns: min(30vw, 43rem) 1fr;
+  grid-template-rows: auto 1fr;
+
+  @include responsive($bp-medium) {
+    grid-template-columns: 1fr;
+  }
+}
+
+//*?+*+*+*+====== !ANCHOR Heading =====+*+*+*+*/
+.heading {
+  border-radius: $-layout-radious;
+  padding: 2.4rem;
+  background-color: $color-primary-dark;
+  text-align: center;
+
+  @include responsive($bp-medium) {
+    display: none;
+  }
+
+  &__title {
+    color: $color-white;
+    font-size: 3rem;
+  }
+}
+
+//*?+*+*+*+====== !ANCHOR Header=====+*+*+*+*/
+.header {
+  border-radius: $-layout-radious;
+  border: 2px solid $color-primary-light;
+  background-color: $color-white;
+  padding: 1.2rem 3.2rem;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  @include responsive($bp-medium) {
+    background-color: $color-primary;
+  }
+}
+
+//*?+*+*+*+====== !ANCHOR Vokabeln =====+*+*+*+*/
+.vokabeln {
+  overflow-y: scroll;
+  width: 100%;
+  max-width: 50rem;
+  min-height: 70rem;
+  margin-inline: auto;
+
+  @include responsive($bp-medium) {
+    display: none;
+  }
+
+  @media only screen and (min-width: $bp-desktop) {
+    display: block !important;
+  }
+}
+
+//*?+*+*+*+====== !ANCHOR Vokabel-List =====+*+*+*+*/
+.vokabel-list {
+  padding: 2.4rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+
+  &--hidden {
+    display: none;
+  }
+}
+
+//*?+*+*+*+====== !ANCHOR Application =====+*+*+*+*/
+.application {
+  padding: 0.4rem;
+  padding-top: 1.6rem;
+  border-radius: $-layout-radious;
+  background: $color-primary;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.4rem;
+
+  @include responsive($bp-medium) {
+    justify-content: space-evenly;
+    gap: 1.2rem;
+  }
+
+  @media only screen and (min-width: $bp-desktop) {
+    display: flex !important;
+  }
+}
+
+//*?+*+*+*+====== !ANCHOR Form-Container =====+*+*+*+*/
+.form-container {
+  width: 100%;
+  max-width: 70rem;
+  background-color: $color-white;
+  border: 2px solid $color-primary;
+  border-radius: 0.8rem;
+  box-shadow: 0 1rem 2rem rgba($color: #000000, $alpha: 0.2);
+  position: relative;
+  transition: all 1s;
+  transform: perspective(300rem) rotateY(0);
+  transform-style: preserve-3d;
+
+  @include responsive($bp-medium) {
+    transition: none;
+  }
+
+  &--back-side {
+    transform: perspective(300rem) rotateY(-180deg);
+  }
+}
+
+//*?+*+*+*+====== !ANCHOR Overlay =====+*+*+*+*/
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(4px);
+  z-index: 200;
+  transition: all 0.2s;
+
+  &--hidden {
+    visibility: hidden;
+    opacity: 0;
+  }
+}

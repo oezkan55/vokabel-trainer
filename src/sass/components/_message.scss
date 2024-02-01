@@ -1,0 +1,44 @@
+@use "../abstracts" as *;
+
+$-message-height: 11rem;
+
+.message {
+  color: $color-white;
+  text-shadow: 0 0 1rem rgba(0, 0, 0, 0.4);
+
+  flex-basis: $-message-height;
+
+  &__added {
+    font-size: 4.4rem;
+    line-height: $-message-height;
+
+    @include responsive($bp-small) {
+      font-size: 3rem;
+    }
+  }
+
+  &__test {
+    font-size: 3.6rem;
+    text-align: center;
+  }
+
+  &__test-ask {
+    font-weight: 500;
+    font-style: italic;
+  }
+
+  &__result {
+    font-size: 3.6rem;
+  }
+
+  &__result-test {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__result-icon {
+    vertical-align: sub;
+    width: 4rem;
+    height: 4rem;
+  }
+}

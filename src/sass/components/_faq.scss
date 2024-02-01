@@ -1,0 +1,95 @@
+@use "../abstracts" as *;
+
+.faq {
+  max-height: 98vh;
+  width: 97%;
+  max-width: 70rem;
+  background-color: $color-white;
+  padding: clamp(1.2rem, 3.5vw, 3.2rem);
+  box-shadow: 0 0 32px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  position: fixed;
+  @extend %abs-center;
+  z-index: 300;
+  transition: all 0.7s;
+
+  &--hidden {
+    opacity: 0;
+    visibility: hidden;
+    top: -150%;
+  }
+
+  &__item {
+    padding: 0.8rem 0;
+    position: relative;
+
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+
+    align-items: center;
+    gap: 0.8rem 2.4rem;
+
+    &:not(:last-child) {
+      margin-bottom: 2.4rem;
+    }
+
+    &::before {
+      top: 0;
+      @extend %faq__item-before-and-after;
+    }
+    &::after {
+      bottom: 0;
+      @extend %faq__item-before-and-after;
+    }
+  }
+
+  :is(&__number, &__heading) {
+    font-size: 3rem;
+    font-weight: 500;
+  }
+
+  &__number {
+    color: $color-grey-light-1;
+  }
+
+  &__heading {
+    color: $color-primary;
+  }
+
+  &__list {
+    list-style: inside;
+    font-size: 2rem;
+    margin-left: 1.6rem;
+    overflow-y: auto;
+    max-height: 0;
+    transition: all 0.3s;
+
+    grid-column: 1 / -1;
+
+    li:not(:last-child) {
+      margin-bottom: 0.4rem;
+    }
+  }
+
+  &__icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    vertical-align: sub;
+    margin-inline: 0.4rem;
+  }
+}
+
+.faq__item--open {
+  &::before,
+  &::after {
+    transform: scaleX(0.93);
+  }
+
+  .faq__number {
+    color: $color-primary;
+  }
+
+  .faq__list {
+    max-height: 23vh;
+  }
+}

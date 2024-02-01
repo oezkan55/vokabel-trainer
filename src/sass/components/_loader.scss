@@ -1,0 +1,28 @@
+@use "../abstracts" as *;
+
+.loader {
+  display: none;
+  position: absolute;
+  @extend %abs-center;
+  height: 30%;
+  width: 30%;
+
+  &--aktive {
+    display: initial;
+  }
+
+  &__icon {
+    fill: $color-primary;
+    animation: rotate 2s infinite linear;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,66 @@
+@use "../abstracts" as *;
+
+.test-form {
+  background-color: $color-white;
+  padding: 2.4rem;
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+
+  display: grid;
+  grid-template-columns: auto 0.7fr auto;
+  grid-template-rows: repeat(2, 1fr) min-content;
+  justify-items: center;
+  align-items: center;
+  row-gap: 2.4rem;
+
+  @include responsive($bp-small) {
+    padding: 0.8rem;
+    grid-template-columns: auto 0.9fr auto;
+  }
+
+  &--disabled {
+    pointer-events: none;
+    filter: blur(0.3rem) brightness(0.9);
+  }
+
+  &__input {
+    width: 90%;
+    font-size: 2.4rem;
+    padding: 0.8rem 1.2rem;
+    border-bottom: 2px solid $color-grey-light-1;
+
+    grid-column: 1 / -1;
+
+    &::-webkit-input-placeholder {
+      color: rgba($color-grey-light-2, 0.85);
+    }
+
+    &:focus {
+      border-bottom: 2px solid $color-primary;
+    }
+  }
+
+  &__count {
+    font-size: 3rem;
+    font-weight: 500;
+    color: $color-primary-dark;
+  }
+
+  &__result {
+    font-size: 2.4rem;
+  }
+
+  &__result-info {
+    &--valid {
+      background-color: rgba(16, 177, 16, 0.5);
+      box-shadow: 0 0 1.5rem 1.5rem rgba(16, 177, 16, 0.5);
+    }
+
+    &--not-valid {
+      background-color: rgba(255, 120, 48, 0.5);
+      box-shadow: 0 0 1.5rem 1.5rem rgba(255, 120, 48, 0.5);
+    }
+  }
+}
